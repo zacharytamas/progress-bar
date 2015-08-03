@@ -1,0 +1,69 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<script src="../progressbar.js/dist/progressbar.min.js" charset="utf-8"></script>
+
+<dom-module id="progress-bar">
+  <style>
+    :host {
+      display: block;
+    }
+
+    #container > svg {
+      width: 100%;
+      display: block;
+    }
+  </style>
+  <template>
+    <div id="container"></div>
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: 'progress-bar',
+
+    properties: {
+      shape: {
+        type: String,
+        value: 'circle'
+      },
+
+      progress: {
+        type: Number,
+        value: 0,
+        observer: '_progressChanged'
+      },
+
+      color: {
+        type: String,
+        value: '#222222'
+      }
+    },
+
+    observers: [
+      '_flushContainer(shape, color)'
+    ],
+
+    _flushContainer: function(shape, color) {
+      if (shape == 'circle') {
+        this.element = new ProgressBar.Circle(this.$.container, {
+          color: color,
+          strokeWidth: 7  // TODO make strokeWidth a property
+        });
+      } else {
+        console.warn('Unknown shape type.');
+      }
+    },
+
+    _progressChanged: function(newValue, oldValue) {
+      if (this.element) this.animate(newValue / 100);
+    },
+
+    animate: function() {
+      if (this.element) {
+        this.element.animate.apply(this.element, arguments);
+      }
+    }
+
+  });
+</script>
