@@ -1,0 +1,27 @@
+{
+  "name": "progress-bar",
+  "version": "0.1.0",
+  "authors": [
+    "Zachary Jones <zacharytamas@gmail.com>"
+  ],
+  "description": "A thin Polymer 1.0+ wrapper around ProgressBar.js.",
+  "keywords": [
+    "web-component",
+    "polymer"
+  ],
+  "main": "progress-bar.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/zacharytamas/progress-bar/",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "progressbar.js": "~0.8.1"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  }
+}
